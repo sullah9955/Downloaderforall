@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>CodingPak</title>
+  <script src="script.js" defer></script>
+ </head>
+ <body>
+   <input type="text"><br>
+   <button>Download File</button>
+ </body>
+ </html>
+ <script>// Coding by MrSaif - https://www.tiktok.com/@sullah9955
+const urlInput = document.querySelector("input");
+const downloadBtn = document.querySelector("button");
+
+downloadBtn.addEventListener("click", async () => {
+
+  try {
+
+      const response = await fetch(urlInput.value);
+      const file = await response.blob();
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(file);
+      link.download = new Date().getTime();
+      link.click();
+   } catch(error) {
+     alert("Failed to download the file!");
+   }
+});</script>
